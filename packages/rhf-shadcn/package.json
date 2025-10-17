@@ -1,0 +1,75 @@
+{
+  "name": "react-hook-form-shadcn",
+  "homepage": "https://github.com/rafaelsteil/react-hook-form-shadcn#readme",
+  "version": "1.0.0",
+  "description": "React Hook Form integration with shadcn/ui components",
+  "type": "module",
+  "repository": "https://github.com/rafaelsteil/react-hook-form-shadcn.git",
+  "author": "Rafael Steil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelsteil/react-hook-form-shadcn/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "react",
+    "shadcn",
+    "shadcn-ui",
+    "react-hook-form"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"__tests__/**/*.ts\" \"__tests__/**/*.tsx\"",
+    "type-check": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "react-hook-form": ">=7"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.14",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.4",
+    "rollup": "^4.21.2",
+    "ts-jest": "^29.1.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "yarn@4.10.3"
+}

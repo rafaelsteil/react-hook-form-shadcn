@@ -1,0 +1,27 @@
+{
+  "name": "react-hook-form-shadcn-monorepo",
+  "homepage": "https://github.com/rafaelsteil/react-hook-form-shadcn#readme",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "https://github.com/rafaelsteil/react-hook-form-shadcn.git",
+  "author": "Rafael Steil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelsteil/react-hook-form-shadcn/issues"
+  },
+  "keywords": [
+    "react",
+    "shadcn",
+    "shadcn-ui",
+    "react-hook-form"
+  ],
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "docs/*"
+  ],
+  "scripts": {
+    "build": "cd packages/rhf-shadcn && yarn build"
+  },
+  "packageManager": "yarn@4.10.3"
+}
