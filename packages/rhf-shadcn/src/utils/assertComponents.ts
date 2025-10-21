@@ -1,4 +1,4 @@
-import { ShadcnRegistry } from '@/registry'
+import { ShadcnRegistry } from '../registry'
 
 type ConditionalComponent = {
   name: keyof ShadcnRegistry
@@ -20,7 +20,7 @@ export function assertComponents(
   for (const key of requiredKeys) {
     if (isStringKey(key) && !components[key]) {
       throw new RequiredComponentError(key)
-    } else if (isConditional(key) && typeof key.value === 'undefined') {
+    } else if (isRequiredConditionally(key) && typeof key.value !== 'undefined' && !components[key.name]) {
       throw new RequiredComponentError(key.name)
     }
   }
@@ -28,7 +28,7 @@ export function assertComponents(
 
 class RequiredComponentError extends Error {
   constructor(key: any) {
-    super(`${String(key)} component is not registered in ShadcnRegistry`)
+    super(`"${String(key)}" component is not registered in ShadcnRegistry of react-hook-form-shadcn`)
   }
 }
 
@@ -36,6 +36,6 @@ function isStringKey(key: AssertableComponent): key is keyof ShadcnRegistry {
   return typeof key === 'string'
 }
 
-function isConditional(key: AssertableComponent): key is ConditionalComponent {
+function isRequiredConditionally(key: AssertableComponent): key is ConditionalComponent {
   return key instanceof Object && 'value' in key
 }
