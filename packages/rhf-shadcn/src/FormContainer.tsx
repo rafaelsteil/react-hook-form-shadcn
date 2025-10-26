@@ -4,9 +4,9 @@ import {
   FormProvider,
   SubmitErrorHandler,
   SubmitHandler,
-  useForm,
   UseFormProps,
   UseFormReturn,
+  useForm,
 } from 'react-hook-form'
 
 export type FormContainerProps<T extends FieldValues = FieldValues> = PropsWithChildren<
@@ -40,14 +40,13 @@ export function FormContainer<TFieldValues extends FieldValues = FieldValues>({
     <FormProvider {...formContext}>
       <form
         className={'flex-1 overflow-hidden flex flex-col'}
-        noValidate
         {...FormProps}
         onSubmit={
           handleSubmit
             ? handleSubmit
             : onSuccess
-            ? formContext.handleSubmit(onSuccess, onError)
-            : () => console.log('submit handler `onSuccess` is missing')
+              ? formContext.handleSubmit(onSuccess, onError)
+              : () => console.log('submit handler `onSuccess` is missing')
         }
       >
         {children}

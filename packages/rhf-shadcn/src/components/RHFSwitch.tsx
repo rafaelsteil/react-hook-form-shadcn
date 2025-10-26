@@ -1,6 +1,6 @@
-import { Controller, useFormContext } from 'react-hook-form'
-import { forwardRef } from 'react'
 import { SwitchProps } from '@radix-ui/react-switch'
+import { forwardRef } from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 
 import { useShadcnRegistry } from '../useShadcnRegistry'
 import { assertComponents } from '../utils/assertComponents'
@@ -83,7 +83,16 @@ const RHFSwitch = forwardRef<HTMLInputElement, Props>(
                 {hasError && <FieldError {...errorProps}>{fieldState.error?.message}</FieldError>}
               </FieldContent>
 
-              <Switch id={field.name} disabled={disabled} {...switchProps} {...field} ref={ref} />
+              <Switch
+                id={field.name}
+                disabled={disabled}
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                {...switchProps}
+                {...field}
+                ref={ref}
+                aria-invalid={hasError}
+              />
             </Field>
           )
         }}

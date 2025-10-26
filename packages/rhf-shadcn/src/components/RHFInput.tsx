@@ -1,5 +1,5 @@
-import { Controller, useFormContext } from 'react-hook-form'
 import { forwardRef } from 'react'
+import { Controller, useFormContext } from 'react-hook-form'
 
 import { useShadcnRegistry } from '../useShadcnRegistry'
 import { assertComponents } from '../utils/assertComponents'
@@ -16,11 +16,13 @@ type Props = {
   className?: string
 
   containerProps?: React.ComponentProps<'div'>
-  inputProps?: React.ComponentProps<'input'>
+
+  // inputProps?: React.ComponentProps<'input'> & Record<string, unknown>
+
   labelProps?: React.ComponentProps<'label'>
   descriptionProps?: React.ComponentProps<'p'>
   errorProps?: React.ComponentProps<'div'>
-}
+} & React.ComponentPropsWithoutRef<'input'>
 
 /**
  * RHFInput wraps shadcn form components with react-hook-form integration.
@@ -35,13 +37,13 @@ const RHFInput = forwardRef<HTMLInputElement, Props>(
       control,
       rules,
       disabled,
-      inputProps,
       placeholder,
       className,
       containerProps,
       labelProps,
       descriptionProps,
       errorProps,
+      ...inputProps
     },
     ref
   ) => {
@@ -67,6 +69,8 @@ const RHFInput = forwardRef<HTMLInputElement, Props>(
         render={({ field, fieldState }) => {
           const hasError = !!fieldState.error?.message || fieldState.invalid
 
+          // console.log('fieldState', componentControl)
+
           return (
             <Field data-invalid={hasError} className={cn(`rhfContainer_${name}`, className)} {...containerProps}>
               {label && (
@@ -81,6 +85,7 @@ const RHFInput = forwardRef<HTMLInputElement, Props>(
                 placeholder={placeholder}
                 {...inputProps}
                 {...field}
+                value={field.value || ''}
                 ref={ref}
               />
               {description && <FieldDescription {...descriptionProps}>{description}</FieldDescription>}
